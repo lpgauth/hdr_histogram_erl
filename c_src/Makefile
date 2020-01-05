@@ -18,16 +18,16 @@ C_SRC_OUTPUT ?= $(CURDIR)/../priv/hdr_histogram_nif.so
 UNAME_SYS := $(shell uname -s)
 ifeq ($(UNAME_SYS), Darwin)
 	CC ?= cc
-	CFLAGS ?= -O3 -std=c99 -arch x86_64 -Wall -Wmissing-prototypes
+	CFLAGS += -O3 -std=c99 -arch x86_64 -Wall -Wmissing-prototypes
 	CXXFLAGS ?= -O3 -arch x86_64 -Wall
 	LDFLAGS ?= -arch x86_64 -flat_namespace -undefined suppress
 else ifeq ($(UNAME_SYS), FreeBSD)
 	CC ?= cc
-	CFLAGS ?= -O3 -std=c99 -finline-functions -Wall -Wmissing-prototypes
+	CFLAGS += -O3 -std=c99 -finline-functions -Wall -Wmissing-prototypes
 	CXXFLAGS ?= -O3 -Wall
 else ifeq ($(UNAME_SYS), Linux)
 	CC ?= gcc
-	CFLAGS ?= -O3 -std=c99 -D_POSIX_C_SOURCE=199309L -finline-functions -Wall -Wmissing-prototypes
+	CFLAGS += -O3 -std=c99 -D_POSIX_C_SOURCE=199309L -finline-functions -Wall -Wmissing-prototypes
 	CXXFLAGS ?= -O3 -Wall
 endif
 
